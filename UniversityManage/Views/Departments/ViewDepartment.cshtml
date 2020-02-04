@@ -1,0 +1,38 @@
+﻿@model UniversityManage.Model.Department
+
+@{
+    ViewData["Title"] = "View";
+}
+
+
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area bg-img" style="background-image: url('/img/bg-img/breadcumb.jpg');">
+    <div class="bradcumbContent">
+        <h2>Department Info</h2>
+    </div>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+<div class="section-padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center mx-auto wow fadeInUp" data-wow-delay="300ms">
+
+                    @if (Model != null)
+                    {
+                    <p>Dept Id: @Model.Id</p>
+                    <h3>Dept Name: @Model.Name</h3>
+                    } 
+                    else
+                    {
+                    <h3>No Department Found</h3>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

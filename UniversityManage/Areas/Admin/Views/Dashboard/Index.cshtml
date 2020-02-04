@@ -1,153 +1,154 @@
-﻿
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{
     ViewData["Title"] = "Dashboard";
 }
 
-    <div class="container-fluid">
+<div class="container-fluid">
 
-        <div class="row">
-            <div class="col-6 col-sm-6 col-md-3">
-                <div class="info-box">
-                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-people-carry"></i></span>
+    <div class="row">
+        <div class="col-6 col-sm-6 col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-people-carry"></i></span>
 
-                    <div class="info-box-content">
-                        <span class="info-box-text"># Students</span>
-                        <span class="info-box-number">
-                            1000
-                        </span>
-                    </div>
-                    <!-- /.info-box-content -->
+                <div class="info-box-content">
+                    <span class="info-box-text"># Students</span>
+                    <span class="info-box-number">
+                        1000
+                    </span>
                 </div>
-                <!-- /.info-box -->
+                <!-- /.info-box-content -->
             </div>
-            <!-- /.col -->
-            <div class="col-6 col-sm-6 col-md-3">
-                <div class="info-box mb-3">
-                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-6 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
-                    <div class="info-box-content">
-                        <span class="info-box-text"># Courses</span>
-                        <span class="info-box-number">120</span>
-                    </div>
-                    <!-- /.info-box-content -->
+                <div class="info-box-content">
+                    <span class="info-box-text"># Courses</span>
+                    <span class="info-box-number">120</span>
                 </div>
-                <!-- /.info-box -->
+                <!-- /.info-box-content -->
             </div>
-            <!-- /.col -->
-            <!-- fix for small devices only -->
-            <div class="clearfix hidden-md-up"></div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <!-- fix for small devices only -->
+        <div class="clearfix hidden-md-up"></div>
 
-            <div class="col-6 col-sm-6 col-md-3">
-                <div class="info-box mb-3">
-                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+        <div class="col-6 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
-                    <div class="info-box-content">
-                        <span class="info-box-text"># Instructors</span>
-                        <span class="info-box-number">220</span>
-                    </div>
-                    <!-- /.info-box-content -->
+                <div class="info-box-content">
+                    <span class="info-box-text"># Instructors</span>
+                    <span class="info-box-number">220</span>
                 </div>
-                <!-- /.info-box -->
+                <!-- /.info-box-content -->
             </div>
-            <!-- /.col -->
-            <div class="col-6 col-sm-6 col-md-3">
-                <div class="info-box mb-3">
-                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-6 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
-                    <div class="info-box-content">
-                        <span class="info-box-text"># Departments</span>
-                        <span class="info-box-number">4</span>
-                    </div>
-                    <!-- /.info-box-content -->
+                <div class="info-box-content">
+                    <span class="info-box-text"># Departments</span>
+                    <span class="info-box-number">4</span>
                 </div>
-                <!-- /.info-box -->
+                <!-- /.info-box-content -->
             </div>
-            <!-- /.col -->
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-6 col-sm-4 col-md-2">
+            <div class="card p-2">
+                <img src="~/admin/dist/img/001-boy.png" class="card-img-top" alt="student">
+                <div class="card-body pl-0">
+                    <a asp-action="admin/student" class="btn btn-primary ">Student</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+            <div class="card p-2">
+                <img src="~/admin/dist/img/002-book.png" class="card-img-top" alt="Enroll">
+                <div class="card-body pl-0">
+                    <a href="#" class="btn bg-purple">Enroll</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+            <div class="card p-2">
+                <img src="~/admin/dist/img/003-teacher.png" class="card-img-top" alt="Faculty">
+                <div class="card-body pl-0">
+                    <a href="#" class="btn btn-primary">Instructor</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+            <div class="card p-2">
+                <img src="~/admin/dist/img/005-language.png" class="card-img-top" alt="Department">
+                <div class="card-body pl-0">
+                    <a href="#" class="btn bg-purple">Department</a>
+                </div>
+            </div>
         </div>
 
-
-        <div class="row">
-
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="card p-2">
-                    <img src="~/admin/dist/img/001-boy.png" class="card-img-top" alt="student">
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary">Student</a>
-                    </div>
+        <div class="col-6 col-sm-4 col-md-2">
+            <div class="card p-2">
+                <img src="~/admin/dist/img/004-books.png" class="card-img-top" alt="Courses">
+                <div class="card-body pl-0">
+                    <a href="#" class="btn btn-primary">Courses</a>
                 </div>
             </div>
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="card p-2">
-                    <img src="~/admin/dist/img/002-book.png" class="card-img-top" alt="Enroll">
-                    <div class="card-body">
-                        <a href="#" class="btn bg-purple">Enroll</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="card p-2">
-                    <img src="~/admin/dist/img/003-teacher.png" class="card-img-top" alt="Faculty">
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary">Instructor</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="card p-2">
-                    <img src="~/admin/dist/img/005-language.png" class="card-img-top" alt="Department">
-                    <div class="card-body">
-                        <a href="#" class="btn bg-purple">Department</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="card p-2">
-                    <img src="~/admin/dist/img/004-books.png" class="card-img-top" alt="Courses">
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary">Courses</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- /.col -->
-            <!-- fix for small devices only -->
-            <!-- <div class="clearfix hidden-md-up"></div> -->
-            <!-- /.col -->
         </div>
 
-        <div class="row">
-            <div class="col-lg-6">
+        <!-- /.col -->
+        <!-- fix for small devices only -->
+        <!-- <div class="clearfix hidden-md-up"></div> -->
+        <!-- /.col -->
+    </div>
 
-                <div class="card card-primary card-outline">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+    <div class="row">
+        <div class="col-lg-6">
 
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up the bulk of the card's
-                            content.
-                        </p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div><!-- /.card -->
-            </div>
-            <!-- /.col-md-6 -->
-            <div class="col-lg-6">
+            <div class="card card-primary card-outline">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
 
-                <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h5 class="m-0">Featured</h5>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">Special title treatment</h6>
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the bulk of the card's
+                        content.
+                    </p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div><!-- /.card -->
+        </div>
+        <!-- /.col-md-6 -->
+        <div class="col-lg-6">
 
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h5 class="m-0">Featured</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">Special title treatment</h6>
+
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
-            <!-- /.col-md-6 -->
         </div>
-        <!-- /.row -->
-    </div><!-- /.container-fluid -->
+        <!-- /.col-md-6 -->
+    </div>
+    <!-- /.row -->
+</div><!-- /.container-fluid -->

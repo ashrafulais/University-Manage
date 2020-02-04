@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -136,7 +138,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                         <li class="nav-item">
-                            <a href="/Admin" class="nav-link bg-gradient-orange text-white">
+                            <a href="admin/" class="nav-link bg-gradient-orange text-white">
                                 <i class="nav-icon fas fa-pager"></i>
                                 <p>
                                     Dashboard
@@ -146,7 +148,7 @@
 
 
                         <li class="nav-item has-treeview menu-open">
-                            <a href="/Admin/Student" class="nav-link bg-blue">
+                            <a href="admin/student" class="nav-link bg-blue">
                                 <i class="nav-icon fas fa-user-graduate"></i>
                                 <p>
                                     Students
@@ -156,19 +158,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="admin/student/addstudent" class="nav-link">
                                         <i class="far fa-plus-square nav-icon"></i>
                                         <p>Add Student</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/Admin/Student" class="nav-link">
+                                    <a href="admin/student/editstudent" class="nav-link">
                                         <i class="far fa-edit"></i>
                                         <p>Edit Student</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="admin/student/deletestudent" class="nav-link">
                                         <i class="far fa-trash-alt"></i>
                                         <p>Delete Student</p>
                                     </a>

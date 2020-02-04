@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using UniversityManage.Models;
+using UniversityManage.Model;
 
 namespace UniversityManage.Controllers
 {
@@ -17,7 +17,8 @@ namespace UniversityManage.Controllers
         {
             _logger = logger;
         }
-
+         
+        [HttpGet]
         public IActionResult Index()
         {
             return View();

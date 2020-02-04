@@ -5,9 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using UniversityManage.Data;
+using UniversityManage.Data.Interfaces;
+using UniversityManage.Data.Repositories;
+using UniversityManage.Data.Services;
 
 namespace UniversityManage
 {
@@ -23,6 +28,23 @@ namespace UniversityManage
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionstring, migrarationassemblyname;
+            connectionstring = Configuration.GetConnectionString("DefaultConnection");
+            migrarationassemblyname = typeof(Startup).Assembly.FullName;
+
+            services.AddTransient( s=> new UniversityContext(connectionstring, migrarationassemblyname));
+
+            services.AddDbContext<UniversityContext>(s => s.UseSqlServer( connectionstring,
+                m => m.MigrationsAssembly(migrarationassemblyname)));
+
+            services.AddTransient<IDepartmentsRepo, DepartmentsRepo>()
+                .AddTransient<IDepartmentsService, DepartmentsService>();
+
+            services.AddTransient<IStudentsRepo, StudentsRepo>()
+                .AddTransient<IStudentsService, StudentsService>();
+
+            services.AddTransient(x=> new UnitofWork(connectionstring, migrarationassemblyname));
+
             services.AddControllersWithViews();
         }
 

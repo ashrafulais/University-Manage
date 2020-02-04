@@ -1,4 +1,31 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function () {
+    $('#usertable-dept').DataTable({
+        "pageLength": 3,
+        "processing": true,
+        "bSearchable": true,        "bFilter": true,
+        "ajax": "/Departments/GetAllDepartments",
+        "columnDefs": [{
+            "orderable": false,
+            "targets": 2,
+            "render": function (data, type, row) {
+                return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/Departments/ViewDepartment/${data}'" value='${data}'><i class="far fa-id-badge"></i>VIEW</button>`;
+            }
+        }]
 
-// Write your JavaScript code.
+    });
+
+    $('#usertable-students').DataTable({
+        "pageLength": 3,
+        "processing": true,
+        "bSearchable": true,        "bFilter": true,
+        "ajax": "/Students/GetAllStudents",
+        "columnDefs": [{
+            "orderable": false,
+            "targets": 3,
+            "render": function (data, type, row) {
+                return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/Students/ViewStudent/${data}'" value='${data}'><i class="far fa-id-badge"></i>VIEW</button>`;
+            }
+        }]
+
+    });
+});
