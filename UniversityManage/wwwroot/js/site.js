@@ -28,4 +28,19 @@
         }]
 
     });
+
+    $('#usertable-instructors').DataTable({
+        "pageLength": 3,
+        "processing": true,
+        "bSearchable": true,        "bFilter": true,
+        "ajax": "/Instructors/GetAllInstructors",
+        "columnDefs": [{
+            "orderable": false,
+            "targets": 3,
+            "render": function (data, type, row) {
+                return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/Instructors/ViewInstructor/${data}'" value='${data}'><i class="far fa-id-badge"></i>VIEW</button>`;
+            }
+        }]
+
+    });
 });

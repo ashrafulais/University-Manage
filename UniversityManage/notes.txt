@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UniversityManage.Data.Interfaces;
-using UniversityManage.Model;
-
-namespace UniversityManage.Data.Services
-{
-    public class StudentsService : IStudentsService
+﻿public class StudentsService : IStudentsService
     {
-        UnitofWork _unitofWork;
-        public StudentsService(UnitofWork unitofWork)
+        public IUnitofWork _unitofWork;
+        public StudentsService(IUnitofWork unitofWork)
         {
             _unitofWork = unitofWork;
         }
@@ -76,6 +68,4 @@ namespace UniversityManage.Data.Services
                 throw new Exception("Error: " + e.Message);
             }
         }
-
     }
-}

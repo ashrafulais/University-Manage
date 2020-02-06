@@ -12,5 +12,6 @@ namespace UniversityManage.Data.Interfaces
         public void InsertStudentService(Student student);
         public void UpdateStudentService(Student student);
         public void DeleteStudentService(Student student);
+
     }
 }

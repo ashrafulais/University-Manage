@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,10 @@ namespace UniversityManage.Data.Repositories
 
         public Student GetStudentRepo(int id)
         {
-            return _context.Students.Where(x => x.Id == id).FirstOrDefault();
+            return _context.Students
+                .Include(x => x.DepartmentStudent)
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
         }
 
         public void InsertStudentRepo(Student student)
@@ -39,5 +43,6 @@ namespace UniversityManage.Data.Repositories
         {
             _context.Students.Update(student);
         }
+
     }
 }
