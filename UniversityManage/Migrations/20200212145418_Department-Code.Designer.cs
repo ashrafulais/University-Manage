@@ -2,49 +2,23 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UniversityManage.Data;
 
 namespace UniversityManage.Migrations
 {
     [DbContext(typeof(UniversityContext))]
-    partial class UniversityContextModelSnapshot : ModelSnapshot
+    [Migration("20200212145418_Department-Code")]
+    partial class DepartmentCode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("UniversityManage.Model.Course", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Code")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DepartmentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("InstructorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DepartmentId");
-
-                    b.HasIndex("InstructorId");
-
-                    b.ToTable("Courses");
-                });
 
             modelBuilder.Entity("UniversityManage.Model.Department", b =>
                 {
@@ -107,34 +81,19 @@ namespace UniversityManage.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("UniversityManage.Model.StudentCourse", b =>
+            modelBuilder.Entity("UniversityManage.Model.StudentInstructor", b =>
                 {
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CourseId")
+                    b.Property<int>("InstructorId")
                         .HasColumnType("int");
 
-                    b.HasKey("StudentId", "CourseId");
+                    b.HasKey("StudentId", "InstructorId");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("InstructorId");
 
-                    b.ToTable("StudentCourses");
-                });
-
-            modelBuilder.Entity("UniversityManage.Model.Course", b =>
-                {
-                    b.HasOne("UniversityManage.Model.Department", "Departments")
-                        .WithMany("Courses")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("UniversityManage.Model.Instructor", "Instructors")
-                        .WithMany("Courses")
-                        .HasForeignKey("InstructorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("StudentInstructors");
                 });
 
             modelBuilder.Entity("UniversityManage.Model.Instructor", b =>
@@ -155,16 +114,16 @@ namespace UniversityManage.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UniversityManage.Model.StudentCourse", b =>
+            modelBuilder.Entity("UniversityManage.Model.StudentInstructor", b =>
                 {
-                    b.HasOne("UniversityManage.Model.Course", "Courses")
-                        .WithMany("StudentCourses")
-                        .HasForeignKey("CourseId")
+                    b.HasOne("UniversityManage.Model.Instructor", "Instructors")
+                        .WithMany("StudentInstructors")
+                        .HasForeignKey("InstructorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("UniversityManage.Model.Student", "Students")
-                        .WithMany("StudentCourses")
+                        .WithMany("StudentInstructors")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

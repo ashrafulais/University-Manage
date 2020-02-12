@@ -13,11 +13,9 @@ namespace UniversityManage.Model
         public int DepartmentId { get; set; }
         //public DateTime DateofRegistration { get; set; }
 
-        public Department DepartmentStudent { get; set; }
+        public Department Departments { get; set; }
 
         [NotMapped]
-        public IEnumerable<Instructor> InstructorsStudent { get; set; }
-        [NotMapped]
-        public IEnumerable<Enrollment> EnrollmentsStudent { get; set; }
+        public IEnumerable<StudentCourse> StudentCourses { get; set; }
     }
 }

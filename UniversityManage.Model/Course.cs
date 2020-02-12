@@ -11,7 +11,9 @@ namespace UniversityManage.Model
         public string Name { get; set; }
 
         public int DepartmentId { get; set; }
-        public Department DepartmentCourse { get; set; }
-        public Instructor InstructorCourse { get; set; }
+        public int InstructorId { get; set; }
+        public Department Departments { get; set; }
+        public Instructor Instructors { get; set; }
+        public IEnumerable<StudentCourse> StudentCourses { get; set; }
     }
 }

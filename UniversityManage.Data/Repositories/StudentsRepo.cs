@@ -29,7 +29,7 @@ namespace UniversityManage.Data.Repositories
         public Student GetStudentRepo(int id)
         {
             return _context.Students
-                .Include(x => x.DepartmentStudent)
+                .Include(x => x.Departments)
                 .Where(x => x.Id == id)
                 .FirstOrDefault();
         }

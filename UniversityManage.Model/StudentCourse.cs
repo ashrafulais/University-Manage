@@ -4,14 +4,13 @@ using System.Text;
 
 namespace UniversityManage.Model
 {
-    public class Enrollment
+    public class StudentCourse
     {
-        public int Id { get; set; }
         public int StudentId { get; set; }
-        public Student StudentsEnrollment { get; set; }
+        public Student Students { get; set; }
 
         public int CourseId { get; set; }
-        public Course CoursesEnrollment { get; set; }
+        public Course Courses { get; set; }
 
     }
 }
