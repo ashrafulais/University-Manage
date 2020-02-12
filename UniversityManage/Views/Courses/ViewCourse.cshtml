@@ -1,4 +1,4 @@
-﻿@model UniversityManage.Model.Student
+﻿@model UniversityManage.Model.Course
 
 @{
     ViewData["Title"] = "View";
@@ -8,7 +8,7 @@
 <!-- ##### Breadcumb Area Start ##### -->
 <div class="breadcumb-area bg-img" style="background-image: url('/img/bg-img/breadcumb.jpg');">
     <div class="bradcumbContent">
-        <h2>Student Info</h2>
+        <h2>Course Info</h2>
     </div>
 </div>
 <!-- ##### Breadcumb Area End ##### -->
@@ -24,18 +24,18 @@
                         <div class="card " style="width: 18rem;">
                             <img class="card-img-top" src="~/img/bg-img/pc-2.jpg" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">@Model.Name</h5>
-                                <p class="card-text">About Student: Lorem ipsum dollr sit amet.</p>
+                                <h5 class="card-title">@Model.Code</h5>
+                                <p class="card-text">About The Course: Lorem ipsum dollr sit amet.</p>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID: @Model.Id</li>
-                                <li class="list-group-item">Department: @Model.Departments.Name</li>
+                                <li class="list-group-item">ID: @Model.Name</li>
+                                <li class="list-group-item">Instructor: @Model.Instructors.Name</li>
                             </ul>
                         </div>
                     }
                     else
                     {
-                        <h3>No Student Found</h3>
+                        <h3>No Course Found</h3>
                     }
 
                 </div>

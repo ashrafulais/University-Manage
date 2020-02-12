@@ -26,7 +26,6 @@
                 return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/Students/ViewStudent/${data}'" value='${data}'><i class="far fa-id-badge"></i>VIEW</button>`;
             }
         }]
-
     });
 
     $('#usertable-instructors').DataTable({
@@ -39,6 +38,20 @@
             "targets": 3,
             "render": function (data, type, row) {
                 return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/Instructors/ViewInstructor/${data}'" value='${data}'><i class="far fa-id-badge"></i>VIEW</button>`;
+            }
+        }]
+    });
+
+    $('#usertable-courses').DataTable({
+        "pageLength": 4,
+        "processing": true,
+        "bSearchable": true,        "bFilter": true,
+        "ajax": "/Courses/GetAllCourses",
+        "columnDefs": [{
+            "orderable": false,
+            "targets": 5,
+            "render": function (data, type, row) {
+                return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/Courses/ViewCourse/${data}'" value='${data}'><i class="far fa-id-badge"></i>VIEW</button>`;
             }
         }]
 
