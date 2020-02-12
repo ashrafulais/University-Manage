@@ -10,11 +10,11 @@ namespace UniversityManage.Controllers
 {
     public class InstructorsController : Controller
     {
-        IStudentsService _studentsService;
+        IInstructorService _instructorService;
 
-        public InstructorsController(IStudentsService studentsService)
+        public InstructorsController(IInstructorService instructorService)
         {
-            _studentsService = studentsService;
+            _instructorService = instructorService;
         }
         public IActionResult Index()
         {
@@ -38,7 +38,7 @@ namespace UniversityManage.Controllers
         {
             int total = 0;
             int totalFiltered = 0;
-            var records = _studentsService.GetAllStudentsService();
+            var records = _instructorService.GetInstructors();
 
             return new
             {
@@ -61,9 +61,8 @@ namespace UniversityManage.Controllers
         {
             try
             {
-                Student student = _studentsService
-                    .GetStudentService(id);
-                return View(student);
+                Instructor instructor = _instructorService.GetInstructor(id);
+                return View(instructor);
             }
             catch (Exception e)
             {

@@ -6,19 +6,18 @@ using UniversityManage.Model;
 
 namespace UniversityManage.Data.Services
 {
-    public class StudentsService : IStudentsService
+    public class InstructorService : IInstructorService
     {
         IUnitofWork _unitofWork;
-        public StudentsService(IUnitofWork unitofWork)
+        public InstructorService(IUnitofWork unitofWork)
         {
             _unitofWork = unitofWork;
         }
-
-        public void DeleteStudentService(Student student)
+        public void DeleteInstructor(Instructor instructor)
         {
             try
             {
-                _unitofWork._studentsRepo.DeleteStudentRepo(student);
+                _unitofWork._instructorRepo.DeleteInstructorRepo(instructor);
                 _unitofWork.Save();
             }
             catch (Exception e)
@@ -27,11 +26,11 @@ namespace UniversityManage.Data.Services
             }
         }
 
-        public List<Student> GetAllStudentsService()
+        public Instructor GetInstructor(int id)
         {
             try
             {
-                return _unitofWork._studentsRepo.GetAllStudentsRepo();
+                return _unitofWork._instructorRepo.GetInstructorRepo(id);
             }
             catch (Exception e)
             {
@@ -39,11 +38,11 @@ namespace UniversityManage.Data.Services
             }
         }
 
-        public Student GetStudentService(int id)
+        public IEnumerable<Instructor> GetInstructors()
         {
             try
             {
-                return _unitofWork._studentsRepo.GetStudentRepo(id);
+                return _unitofWork._instructorRepo.GetInstructorsRepo();
             }
             catch (Exception e)
             {
@@ -51,11 +50,11 @@ namespace UniversityManage.Data.Services
             }
         }
 
-        public void InsertStudentService(Student student)
+        public void InsertInstructor(Instructor instructor)
         {
             try
             {
-                _unitofWork._studentsRepo.InsertStudentRepo(student);
+                _unitofWork._instructorRepo.InsertInstructorRepo(instructor);
                 _unitofWork.Save();
             }
             catch (Exception e)
@@ -64,11 +63,11 @@ namespace UniversityManage.Data.Services
             }
         }
 
-        public void UpdateStudentService(Student student)
+        public void UpdateInstructor(Instructor instructor)
         {
             try
             {
-                _unitofWork._studentsRepo.UpdateStudentRepo(student);
+                _unitofWork._instructorRepo.UpdateInstructorRepo(instructor);
                 _unitofWork.Save();
             }
             catch (Exception e)
@@ -76,6 +75,5 @@ namespace UniversityManage.Data.Services
                 throw new Exception("Error: " + e.Message);
             }
         }
-
     }
 }

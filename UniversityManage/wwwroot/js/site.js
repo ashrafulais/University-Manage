@@ -49,7 +49,7 @@
         "ajax": "/Courses/GetAllCourses",
         "columnDefs": [{
             "orderable": false,
-            "targets": 5,
+            "targets": 4,
             "render": function (data, type, row) {
                 return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/Courses/ViewCourse/${data}'" value='${data}'><i class="far fa-id-badge"></i>VIEW</button>`;
             }

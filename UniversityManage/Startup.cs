@@ -37,9 +37,7 @@ namespace UniversityManage
             services.AddDbContext<UniversityContext>(s => s.UseSqlServer( connectionstring,
                 m => m.MigrationsAssembly(migrarationassemblyname)));
 
-            services.AddTransient<IUnitofWork, UnitofWork>();
-
-            services.AddTransient(x => new UnitofWork(connectionstring, migrarationassemblyname));
+            services.AddTransient<IUnitofWork>(x => new UnitofWork(connectionstring, migrarationassemblyname));
 
             services.AddTransient<IDepartmentsRepo, DepartmentsRepo>()
                 .AddTransient<IDepartmentsService, DepartmentsService>();
@@ -49,6 +47,9 @@ namespace UniversityManage
 
             services.AddTransient<ICoursesRepo, CoursesRepo>()
                 .AddTransient<ICoursesService, CoursesService>();
+
+            services.AddTransient<IInstructorRepo, InstructorRepo>()
+                .AddTransient<IInstructorService, InstructorService>();
 
             services.AddControllersWithViews();
         }

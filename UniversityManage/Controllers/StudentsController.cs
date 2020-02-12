@@ -21,6 +21,7 @@ namespace UniversityManage.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult GetAllStudents()
         {
             try
@@ -57,12 +58,11 @@ namespace UniversityManage.Controllers
         }
 
         [HttpGet()]
-        public IActionResult ViewStudent(int id)
+        public IActionResult ViewInstructor(int id)
         {
             try
             {
-                Student student = _studentsService
-                    .GetStudentService(id);
+                Student student = _studentsService.GetStudentService(id);
                 return View(student);
             }
             catch (Exception e)

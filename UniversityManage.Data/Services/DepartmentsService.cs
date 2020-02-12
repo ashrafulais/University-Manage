@@ -8,8 +8,8 @@ namespace UniversityManage.Data.Services
 {
     public class DepartmentsService : IDepartmentsService
     {
-        UnitofWork _unitofWork;
-        public DepartmentsService(UnitofWork unitofWork)
+        IUnitofWork _unitofWork;
+        public DepartmentsService(IUnitofWork unitofWork)
         {
             _unitofWork = unitofWork;
         }

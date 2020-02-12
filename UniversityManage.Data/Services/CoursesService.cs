@@ -8,7 +8,7 @@ namespace UniversityManage.Data.Services
 {
     public class CoursesService : ICoursesService
     {
-        IUnitofWork _unitofWork;
+        public IUnitofWork _unitofWork;
         public CoursesService(IUnitofWork unitofWork)
         {
             _unitofWork = unitofWork;
@@ -18,6 +18,7 @@ namespace UniversityManage.Data.Services
             try
             {
                 _unitofWork._coursesRepo.DeleteCourseRepo(course);
+                _unitofWork.Save();
             }
             catch (Exception e)
             {
@@ -54,6 +55,7 @@ namespace UniversityManage.Data.Services
             try
             {
                 _unitofWork._coursesRepo.InsertCourseRepo(course);
+                _unitofWork.Save();
             }
             catch (Exception e)
             {
@@ -66,6 +68,7 @@ namespace UniversityManage.Data.Services
             try
             {
                 _unitofWork._coursesRepo.UpdateCourseRepo(course);
+                _unitofWork.Save();
             }
             catch (Exception e)
             {
