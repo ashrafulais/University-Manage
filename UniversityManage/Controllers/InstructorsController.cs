@@ -57,7 +57,7 @@ namespace UniversityManage.Controllers
         }
 
         [HttpGet()]
-        public IActionResult ViewInstructors(int id)
+        public IActionResult ViewInstructor(int id)
         {
             try
             {

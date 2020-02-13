@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,6 +20,8 @@ namespace UniversityManage
 {
     public class Startup
     {
+        public static IContainer AutofacContainer;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,13 +36,26 @@ namespace UniversityManage
             connectionstring = Configuration.GetConnectionString("DefaultConnection");
             migrarationassemblyname = typeof(Startup).Assembly.FullName;
 
+            //var builder = new ContainerBuilder();
+            //builder.Populate(services);
+
+            //autofac
+            //builder.RegisterType<IUnitofWork>().As<UnitofWork>()
+            //    .WithParameter("connectionString", connectionstring)
+            //    .WithParameter("migrationAssemblyName", migrarationassemblyname)
+            //    .InstancePerLifetimeScope();
+
+            services.AddTransient<IUnitofWork>(x => new UnitofWork(connectionstring, migrarationassemblyname));
+
             services.AddTransient( s=> new UniversityContext(connectionstring, migrarationassemblyname));
 
             services.AddDbContext<UniversityContext>(s => s.UseSqlServer( connectionstring,
                 m => m.MigrationsAssembly(migrarationassemblyname)));
 
-            services.AddTransient<IUnitofWork>(x => new UnitofWork(connectionstring, migrarationassemblyname));
 
+            //autofac
+            //builder.RegisterType<IDepartmentsRepo>().As<DepartmentsRepo>();
+            //builder.RegisterType<IDepartmentsService>().As<DepartmentsService>();
             services.AddTransient<IDepartmentsRepo, DepartmentsRepo>()
                 .AddTransient<IDepartmentsService, DepartmentsService>();
 

@@ -1,41 +1,48 @@
-﻿using System;
+﻿using Autofac;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using UniversityManage.Data.Interfaces;
 using UniversityManage.Model;
 
-namespace UniversityManage.Controllers
+namespace UniversityManage.Areas.Admin.Models
 {
-    public class StudentsController : Controller
+    public class StudentViewModel
     {
+        IDepartmentsService _departmentService;
         IStudentsService _studentsService;
 
-        public StudentsController(IStudentsService studentsService)
+        public StudentViewModel(IDepartmentsService departmentService,
+            IStudentsService studentsService)
         {
+            _departmentService = departmentService;
             _studentsService = studentsService;
         }
-        public IActionResult Index()
+
+        public List<Department> GetDepartments()
         {
-            return View();
+            return _departmentService
+                .GetAllDepartmentsService()
+                .ToList();
         }
 
-        [HttpGet]
-        public IActionResult GetAllStudents()
+        public object GetAllStudents()
         {
             try
             {
-                return Json(GetDatabaseData());
+                return GetDatabaseData();
             }
             catch (Exception e)
             {
-                return View("Error", new ErrorViewModel { RequestId = e.Message });
+                throw new Exception("Error "+e.Message);
             }
         }
 
         [ActionName("GetDatabaseData")]
-        public object GetDatabaseData()
+        private object GetDatabaseData()
         {
             int total = 0;
             int totalFiltered = 0;
@@ -57,18 +64,9 @@ namespace UniversityManage.Controllers
             };
         }
 
-        [HttpGet()]
-        public IActionResult ViewStudent(int id)
+        internal void InsertStudent(Student student)
         {
-            try
-            {
-                Student student = _studentsService.GetStudentService(id);
-                return View(student);
-            }
-            catch (Exception e)
-            {
-                return View("Error", new ErrorViewModel { RequestId = e.Message });
-            }
+            _studentsService.InsertStudentService(student);
         }
     }
 }

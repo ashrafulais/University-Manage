@@ -15,9 +15,9 @@ namespace UniversityManage.Data
 
         public UniversityContext _context;
 
-        public UnitofWork(string conn, string mig)
+        public UnitofWork(string connectionString, string migrationAssemblyName)
         {
-            _context = new UniversityContext(conn, mig);
+            _context = new UniversityContext(connectionString, migrationAssemblyName);
             _departmentsRepo = new DepartmentsRepo(_context);
             _studentsRepo = new StudentsRepo(_context);
             _coursesRepo = new CoursesRepo(_context);
