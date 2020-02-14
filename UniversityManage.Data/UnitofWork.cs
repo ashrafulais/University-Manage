@@ -12,6 +12,7 @@ namespace UniversityManage.Data
         public IStudentsRepo _studentsRepo { get; set; }
         public ICoursesRepo _coursesRepo { get; set; }
         public IInstructorRepo _instructorRepo { get; set; }
+        public IStudentCourseRepo _studentCourseRepo { get; set; }
 
         public UniversityContext _context;
 
@@ -22,6 +23,7 @@ namespace UniversityManage.Data
             _studentsRepo = new StudentsRepo(_context);
             _coursesRepo = new CoursesRepo(_context);
             _instructorRepo = new InstructorRepo(_context);
+            _studentCourseRepo = new StudentCourseRepo(_context);
         }
 
         public void Save()

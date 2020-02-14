@@ -11,6 +11,7 @@ namespace UniversityManage.Data
         public IStudentsRepo _studentsRepo { get; set; }
         public ICoursesRepo _coursesRepo { get; set; }
         public IInstructorRepo _instructorRepo { get; set; }
+        public IStudentCourseRepo _studentCourseRepo { get; set; }
         public void Save();
     }
 }

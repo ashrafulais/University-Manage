@@ -30,14 +30,15 @@ namespace UniversityManage
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        //IServiceProvider
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionstring, migrarationassemblyname;
             connectionstring = Configuration.GetConnectionString("DefaultConnection");
             migrarationassemblyname = typeof(Startup).Assembly.FullName;
 
-            //var builder = new ContainerBuilder();
-            //builder.Populate(services);
+           
+            
 
             //autofac
             //builder.RegisterType<IUnitofWork>().As<UnitofWork>()
@@ -68,7 +69,17 @@ namespace UniversityManage
             services.AddTransient<IInstructorRepo, InstructorRepo>()
                 .AddTransient<IInstructorService, InstructorService>();
 
+            services.AddTransient<IStudentCourseRepo, StudentCourseRepo>()
+                .AddTransient<IStudentCourseService, StudentCourseService>();
+
             services.AddControllersWithViews();
+
+
+            //var builder = new ContainerBuilder();
+            //builder.Populate(services);
+
+            //AutofacContainer = builder.Build();
+            //return new AutofacServiceProvider(AutofacContainer);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
