@@ -2,12 +2,10 @@
 @{
     ViewData["Title"] = "Edit Student";
 
-    var name = "";
-    var deptid = 0;
+    var student = new Student();
     if(Model != null)
     {
-        name = Model.Name;
-        deptid = Model.DepartmentId;
+        student = Model;
     }
 }
 
@@ -16,7 +14,7 @@
 
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Edit Student @name</h3>
+                <h3 class="card-title">Edit Student @student.Name</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -26,8 +24,16 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
+                        <label asp-for="@Model.Id">Student Id</label>
+                        
+                        <select asp-for="@Model.Id">
+                            <option value="@student.Id">@student.Id</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label asp-for="@Model.Name">Student Name</label>
-                        <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Enter name" value="@name">
+                        <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Enter name" value="@student.Name">
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.DepartmentId">Department Name</label>
@@ -37,7 +43,7 @@
                                 var result = (List<UniversityManage.Model.Department>)ViewData["departments"];
                                 foreach (var dept in result)
                                 {
-                                    if (dept.Id == deptid)
+                                    if (dept.Id == student.DepartmentId)
                                     {
                                         <option value="@dept.Id" selected> @dept.Name </option>
                                     }

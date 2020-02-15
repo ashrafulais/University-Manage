@@ -1,0 +1,35 @@
+﻿@model UniversityManage.Model.Instructor
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="section-padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading wow fadeInUp" data-wow-delay="300ms">
+
+                    @if (Model != null)
+                    {
+                        <div class="card " style="width: 18rem;">
+                            <img class="card-img-top" src="~/img/bg-img/pc-4.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h2 >Instructor: @Model.Id </h2>
+                                <h2 >Name: @Model.Name</h2>
+
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <h3>No Instructor Found</h3>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

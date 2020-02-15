@@ -13,11 +13,15 @@ namespace UniversityManage.Data.Services
         {
             _unitofWork = unitofWork;
         }
-        public void DeleteDepartmentService(Department department)
+        public void DeleteDepartmentService(int id)
         {
             try
             {
-                _unitofWork._departmentsRepo.DeleteDepartmentRepo(department);
+                _unitofWork._departmentsRepo
+                    .DeleteDepartmentRepo(_unitofWork
+                        ._departmentsRepo
+                        .GetDepartmentRepo(id)
+                    );
                 _unitofWork.Save();
             }
             catch (Exception e)

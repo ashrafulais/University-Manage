@@ -1,6 +1,6 @@
 ﻿@model UniversityManage.Model.Instructor
 @{
-    ViewData["Title"] = "Edit Instructor";
+    ViewData["Title"] = "Edit Enrollment";
 
     var inst = new Instructor();
     if (Model != null)
@@ -22,13 +22,6 @@
 
                 </div>
                 <div class="card-body">
-
-                    <div class="form-group">
-                        <label asp-for="@Model.Id">Instructor Id</label>
-                        <select asp-for="@Model.Id">
-                            <option value="@@inst.Id">@inst.Id</option>
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <label asp-for="@Model.Name">Instructor Name</label>

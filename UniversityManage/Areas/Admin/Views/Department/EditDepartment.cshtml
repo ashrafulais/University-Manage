@@ -1,0 +1,55 @@
+﻿@model UniversityManage.Model.Department
+@{
+    ViewData["Title"] = "Edit Department";
+
+    var inst = new Department();
+    if (Model != null)
+    {
+        inst = Model;
+    }
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Edit Department </h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" action="/Admin/Department/EditDepartment" method="post">
+                <div asp-validation-summary="All" class="text-warning">
+
+                </div>
+
+                <div class="card-body">
+                    <label asp-for="@Model.Id">Department ID</label>
+                    @*<input asp-for="@Model.Id" type="text" class="form-control" value="@inst.Id">*@
+                    <select asp-for="@Model.Id">
+                        <option value="@inst.Id">@inst.Id</option>
+                    </select>
+                </div>
+
+                <div class="card-body">
+                    <label asp-for="@Model.Code">Department Code</label>
+                    <input asp-for="@Model.Code" type="text" class="form-control" placeholder="CSE" value="@inst.Code">
+                </div>
+
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label asp-for="@Model.Name">Department Name</label>
+                        <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Enter name" value="@inst.Name">
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

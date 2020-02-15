@@ -1,14 +1,14 @@
-﻿@model UniversityManage.Model.Student;
+﻿@model UniversityManage.Model.StudentCourse;
 
 @{
-    ViewData["Title"] = "Delete Student";
+    ViewData["Title"] = "Delete Enrollment";
 }
 
 
 @if (Model != null)
 {
-    <h3>Delete student: @Model.Id - @Model.Name</h3>
-    <a href="/admin/student/ConfirmDeleteStudent/@Model.Id" class="btn btn-outline-warning">Confirm</a>
+    <h3>Delete student: @Model.StudentId - @Model.CourseId</h3>
+    <a href="/admin/enrollment/ConfirmDeleteEnrollment?StudentId=@Model.StudentId&CourseId=@Model.CourseId" class="btn btn-outline-warning">Confirm</a>
     <a href="AllStudents" class="btn btn-outline-warning">Don't</a>
 }
 

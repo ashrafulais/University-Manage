@@ -11,6 +11,6 @@ namespace UniversityManage.Data.Interfaces
         public Department GetDepartmentService(int id);
         public void InsertDepartmentService(Department department);
         public void UpdateDepartmentService(Department department);
-        public void DeleteDepartmentService(Department department);
+        public void DeleteDepartmentService(int id);
     }
 }

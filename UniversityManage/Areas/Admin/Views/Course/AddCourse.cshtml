@@ -1,6 +1,6 @@
-﻿@model UniversityManage.Model.StudentCourse
+﻿@model UniversityManage.Model.Instructor
 @{
-    ViewData["Title"] = "Enrollments";
+    ViewData["Title"] = "Instructor";
 
 }
 
@@ -8,25 +8,27 @@
         <div class="col-md-6">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Edit Student </h3>
+                    <h3 class="card-title">Add Instructor </h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="AddEnrollment" method="post">
+                <form role="form" action="AddInstructor" method="post">
                     <div asp-validation-summary="All" class="text-warning">
 
                     </div>
                     <div class="card-body">
+
                         <div class="form-group">
-                            <label asp-for="@Model.StudentId">Student Id</label>
-                            <input asp-for="@Model.StudentId" type="text" class="form-control" placeholder="Enter studentid">
+                            <label asp-for="@Model.Name">Instructor Name</label>
+                            <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Enter name">
                         </div>
+
                         <div class="form-group">
-                            <label asp-for="@Model.CourseId">Select Course</label>
-                            <select class="form-control" asp-for="@Model.CourseId">
-                                @if (ViewData["courses"] != null)
+                            <label asp-for="@Model.DepartmentId">Select Course</label>
+                            <select class="form-control" asp-for="@Model.DepartmentId">
+                                @if (ViewData["departments"] != null)
                                 {
-                                    var result = (List<UniversityManage.Model.Course>)ViewData["courses"];
+                                    var result = (List<UniversityManage.Model.Department>)ViewData["departments"];
                                     foreach (var row in result)
                                     {
                                         <option value="@row.Id"> @row.Name </option>
@@ -34,6 +36,12 @@
                                 }
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label asp-for="@Model.Salary">Instructor Salary</label>
+                            <input asp-for="@Model.Salary" type="number" class="form-control" placeholder="Enter Numebr">
+                        </div>
+
                     </div>
                     <!-- /.card-body -->
 
