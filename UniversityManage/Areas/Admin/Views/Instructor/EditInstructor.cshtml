@@ -1,43 +1,42 @@
-﻿@model UniversityManage.Model.StudentCourse
+﻿@model UniversityManage.Model.Instructor
 @{
     ViewData["Title"] = "Edit Enrollment";
 
-    var studentid = 0;
-    var courseid = 0;
-    if(Model != null)
+    var inst = new Instructor();
+    if (Model != null)
     {
-        studentid = Model.StudentId;
-        courseid = Model.CourseId;
+        inst = Model;
     }
 }
 
 <div class="row">
     <div class="col-md-6">
-        <p class="text-danger">This operation won't work. Because there is only composite key :P </p>
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Edit Student @studentid</h3>
+                <h3 class="card-title">Edit Instructor </h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="EditEnrollment" method="post">
+            <form role="form" action="EditInstructor" method="post">
                 <div asp-validation-summary="All" class="text-warning">
 
                 </div>
                 <div class="card-body">
+
                     <div class="form-group">
-                        <label asp-for="@Model.StudentId">Student Id</label>
-                        <input asp-for="@Model.StudentId" type="text" class="form-control" placeholder="Enter studentid" value="@studentid">
+                        <label asp-for="@Model.Name">Instructor Name</label>
+                        <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Enter name" value="@inst.Name">
                     </div>
+
                     <div class="form-group">
-                        <label asp-for="@Model.CourseId">Select Course</label>
-                        <select class="form-control" asp-for="@Model.CourseId">
-                            @if (ViewData["courses"] != null)
+                        <label asp-for="@Model.DepartmentId">Select Course</label>
+                        <select class="form-control" asp-for="@Model.DepartmentId">
+                            @if (ViewData["departments"] != null)
                             {
-                                var result = (List<UniversityManage.Model.Course>)ViewData["courses"];
+                                var result = (List<UniversityManage.Model.Department>)ViewData["departments"];
                                 foreach (var row in result)
                                 {
-                                    if (row.Id == courseid)
+                                    if (row.Id == inst.DepartmentId)
                                     {
                                         <option value="@row.Id" selected> @row.Name </option>
                                     }
@@ -49,6 +48,12 @@
                             }
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label asp-for="@Model.Salary">Instructor Salary</label>
+                        <input asp-for="@Model.Salary" type="number" class="form-control" placeholder="Enter Numebr" value="@inst.Salary">
+                    </div>
+
                 </div>
                 <!-- /.card-body -->
 

@@ -11,6 +11,6 @@ namespace UniversityManage.Data.Interfaces
         public IEnumerable<Instructor> GetInstructors();
         public void InsertInstructor(Instructor instructor);
         public void UpdateInstructor(Instructor instructor);
-        public void DeleteInstructor(Instructor instructor);
+        public void DeleteInstructor(int id);
     }
 }

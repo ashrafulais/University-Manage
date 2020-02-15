@@ -11,13 +11,13 @@ namespace UniversityManage.Areas.Admin.Controllers
     [Area("admin")]
     public class InstructorController : Controller
     {
-        IStudentCourseService _studentCourseService;
-        ICoursesService _coursesService;
-        public InstructorController(IStudentCourseService studentCourseService,
-            ICoursesService coursesService)
+        IInstructorService _instructorService;
+        IDepartmentsService _departmentsService;
+        public InstructorController(IInstructorService instructorService,
+        IDepartmentsService departmentsService)
         {
-            _studentCourseService = studentCourseService;
-            _coursesService = coursesService;
+            _instructorService = instructorService;
+            _departmentsService = departmentsService;
         }
 
         public IActionResult Index()
@@ -25,12 +25,12 @@ namespace UniversityManage.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult AllEnrollments()
+        public IActionResult AllInstructors()
         {
             return View();
         }
 
-        public IActionResult AllEnrollmentsData()
+        public IActionResult AllInstructorsData()
         {
             try
             {
@@ -48,7 +48,7 @@ namespace UniversityManage.Areas.Admin.Controllers
         {
             int total = 0;
             int totalFiltered = 0;
-            var records = _studentCourseService.GetStudentCoursesService();
+            var records = _instructorService.GetInstructors();
 
             return new
             {
@@ -57,24 +57,59 @@ namespace UniversityManage.Areas.Admin.Controllers
                 data = (from record in records
                         select new string[]
                         {
-                                record.StudentId.ToString(),
-                                record.CourseId.ToString()
+                                record.Id.ToString(),
+                                record.Name,
+                                record.DepartmentId.ToString(),
+                                record.Salary.ToString()
                         }
                     ).ToArray()
             };
         }
 
-        public IActionResult Demo()
-        {
-            return View("Message");
-        }
-
-        public IActionResult ViewEnrollment(int studentid, int courseid)
+        public IActionResult ViewInstructor(int id)
         {
             try
             {
-                return View(_studentCourseService
-                    .GetStudentCourseService(studentid, courseid)
+                return View(_instructorService
+                    .GetInstructor(id));
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = e.Message;
+                return View("Message");
+            }
+        }
+        public IActionResult AddInstructor()
+        {
+            ViewData["departments"] = _departmentsService
+                .GetAllDepartmentsService();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddInstructor(Instructor instructor)
+        {
+            try
+            {
+                _instructorService.InsertInstructor(instructor);
+                ViewData["Message"] = "Successfully inserted";
+                return View("Message");
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = e.Message;
+                return View("Message");
+            }
+        }
+
+        public IActionResult EditInstructor(int id)
+        {
+            try
+            {
+                ViewData["departments"] = _departmentsService
+                    .GetAllDepartmentsService();
+                return View(_instructorService
+                    .GetInstructor(id)
                     );
             }
             catch (Exception e)
@@ -83,20 +118,14 @@ namespace UniversityManage.Areas.Admin.Controllers
                 return View("Message");
             }
         }
-        public IActionResult AddEnrollment()
-        {
-            ViewData["courses"] = _coursesService
-                    .GetCoursesService();
-            return View();
-        }
 
         [HttpPost]
-        public IActionResult AddEnrollment(StudentCourse studentCourse)
+        public IActionResult EditInstructor(Instructor instructor)
         {
             try
             {
-                _studentCourseService.InsertStudentCourseService(studentCourse);
-                ViewData["Message"] = "Successfully enrolled";
+                _instructorService.UpdateInstructor(instructor);
+                ViewData["Message"] = "Info Updated";
                 return View("Message");
             }
             catch (Exception e)
@@ -106,58 +135,13 @@ namespace UniversityManage.Areas.Admin.Controllers
             }
         }
 
-        public IActionResult EditEnrollment(int studentid, int courseid)
+        public IActionResult DeleteInstructor(int id)
         {
             try
             {
-                ViewData["courses"] = _coursesService
-                    .GetCoursesService();
-                return View(new StudentCourse()
-                { 
-                    StudentId= studentid, 
-                    CourseId = courseid
-                });
-            }
-            catch (Exception e)
-            {
-                ViewData["Message"] = e.Message;
-                return View("Message");
-            }
-        }
+                _instructorService.DeleteInstructor(id);
 
-        [HttpPost]
-        public IActionResult EditEnrollment(StudentCourse studentCourse)
-        {
-            try
-            {
-                _studentCourseService.UpdateStudentCourseService(studentCourse);
-                ViewData["Message"] = "Course Updated";
-                return View("Message");
-            }
-            catch (Exception e)
-            {
-                ViewData["Message"] = e.Message;
-                return View("Message");
-            }
-        }
-
-        //public async Task RunEdit(StudentCourse studentCourse)
-        //{
-        //    await Task.Run(() => _studentCourseService.UpdateStudentCourseService(studentCourse));
-        //}
-
-        public IActionResult DeleteEnrollment(int studentid, int courseid)
-        {
-            try
-            {
-                _studentCourseService
-                    .DeleteStudentCourseService(new StudentCourse()
-                    {
-                        StudentId = studentid,
-                        CourseId = courseid
-                    });
-
-                ViewData["Message"] = "Course Enrollment Deleted";
+                ViewData["Message"] = "Instructor Deleted";
                 return View("Message");
             }
             catch (Exception e)

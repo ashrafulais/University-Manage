@@ -32,3 +32,20 @@ $('#admintable-enrollments').DataTable({
         }
     }]
 });
+
+$('#admintable-instructor').DataTable({
+    "pageLength": 5,
+    "processing": true,
+    "bSearchable": true,
+    "bFilter": true,
+    "ajax": "AllInstructorsData",
+    "columnDefs": [{
+        "orderable": false,
+        "targets": 4,
+        "render": function (data, type, row) {
+            return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='ViewInstructor/${row[0]}'" value='${row[0]}'><i class="far fa-id-badge"></i>VIEW</button>` +
+                `<button type="submit" class="btn btn-warning btn-sm ml-1" onclick="window.location.href='EditInstructor/${row[0]}'" value='${row[0]}'><i class="far fa-edit"></i>EDIT</button>` +
+                `<button type="submit" class="btn btn-danger btn-sm ml-1" onclick="window.location.href='DeleteInstructor/${row[0]}'" value='${row[0]}'><i class="fas fa-trash"></i>DELETE</button>`;
+        }
+    }]
+});

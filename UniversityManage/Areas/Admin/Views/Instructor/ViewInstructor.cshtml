@@ -1,4 +1,4 @@
-﻿@model UniversityManage.Model.StudentCourse
+﻿@model UniversityManage.Model.Instructor
 
 @{
     ViewData["Title"] = "View";
@@ -15,15 +15,15 @@
                         <div class="card " style="width: 18rem;">
                             <img class="card-img-top" src="~/img/bg-img/pc-4.jpg" alt="Card image cap">
                             <div class="card-body">
-                                <h2 >Student id: @Model.StudentId</h2>
-                                <h2 >CourseId: @Model.CourseId</h2>
+                                <h2 >Instructor: @Model.Id </h2>
+                                <h2 >Name: @Model.Name</h2>
 
                             </div>
                         </div>
                     }
                     else
                     {
-                        <h3>No Student Found</h3>
+                        <h3>No Instructor Found</h3>
                     }
 
                 </div>
