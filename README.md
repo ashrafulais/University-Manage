@@ -1,4 +1,4 @@
-![Generic badge](https://img.shields.io/badge/ASP.NETCore-v3.0-success.svg) ![Generic badge](https://img.shields.io/badge/ASP.NETCore-v3.0-success.svg) ![Generic badge](https://img.shields.io/badge/C%23-v8.0-blueviolet.svg) ![Generic badge](https://img.shields.io/badge/Size-95.6mb-informational.svg) ![Generic badge](https://img.shields.io/badge/errors-0-success.svg)
+![Generic badge](https://img.shields.io/badge/ASP.NETCore-v3.0-success.svg) ![Generic badge](https://img.shields.io/badge/EntityFrameworkCore-v3.0-green.svg) ![Generic badge](https://img.shields.io/badge/C%23-v8.0-blueviolet.svg) ![Generic badge](https://img.shields.io/badge/Size-95.6mb-informational.svg) ![Generic badge](https://img.shields.io/badge/errors-0-success.svg)
 # Welcome to University Manage Project!
 Project Feature
  1. Separate User Panel
