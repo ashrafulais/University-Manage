@@ -5,6 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200214180956_Studentcourse-id_Added.cs" />
+    <Compile Remove="Migrations\20200214180956_Studentcourse-id_Added.Designer.cs" />
+    <Compile Remove="Migrations\20200214181754_StudentCourse-id_Added2.cs" />
+    <Compile Remove="Migrations\20200214181754_StudentCourse-id_Added2.Designer.cs" />
+    <Compile Remove="Migrations\20200214182109_StuCourseId_Removed.cs" />
+    <Compile Remove="Migrations\20200214182109_StuCourseId_Removed.Designer.cs" />
+    <Compile Remove="Migrations\20200214182205_StuCourseId_Removed.cs" />
+    <Compile Remove="Migrations\20200214182205_StuCourseId_Removed.Designer.cs" />
+    <Compile Remove="Migrations\20200214182318_StuCourseId_Removed.cs" />
+    <Compile Remove="Migrations\20200214182318_StuCourseId_Removed.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="5.1.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />

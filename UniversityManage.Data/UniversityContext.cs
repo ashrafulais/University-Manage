@@ -35,7 +35,7 @@ namespace UniversityManage.Data
             //INSTRUCTOR
             builder.Entity<Instructor>()
                 .HasMany(m => m.Courses)
-                .WithOne(o => o.Instructors); 
+                .WithOne(o => o.Instructors);
 
             //STUDENTCOURSES - Many To Many Relationships
             builder.Entity<StudentCourse>()

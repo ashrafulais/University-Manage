@@ -19,6 +19,7 @@ namespace UniversityManage.Data.Services
             try
             {
                 _unitofWork._studentCourseRepo.DeleteStudentCourseRepo(studentCourse);
+                _unitofWork.Save();
             }
             catch (Exception e)
             {
@@ -71,6 +72,7 @@ namespace UniversityManage.Data.Services
             {
                 _unitofWork._studentCourseRepo
                     .InsertStudentCourseRepo(studentCourse);
+                _unitofWork.Save();
             }
             catch (Exception e)
             {
@@ -84,6 +86,7 @@ namespace UniversityManage.Data.Services
             {
                 _unitofWork._studentCourseRepo
                     .UpdateStudentCourseRepo(studentCourse);
+                _unitofWork.Save();
             }
             catch (Exception e)
             {

@@ -9,11 +9,11 @@ using UniversityManage.Model;
 namespace UniversityManage.Areas.Admin.Controllers
 {
     [Area("admin")]
-    public class EnrollmentController : Controller
+    public class InstructorController : Controller
     {
         IStudentCourseService _studentCourseService;
         ICoursesService _coursesService;
-        public EnrollmentController(IStudentCourseService studentCourseService,
+        public InstructorController(IStudentCourseService studentCourseService,
             ICoursesService coursesService)
         {
             _studentCourseService = studentCourseService;
@@ -62,6 +62,11 @@ namespace UniversityManage.Areas.Admin.Controllers
                         }
                     ).ToArray()
             };
+        }
+
+        public IActionResult Demo()
+        {
+            return View("Message");
         }
 
         public IActionResult ViewEnrollment(int studentid, int courseid)
