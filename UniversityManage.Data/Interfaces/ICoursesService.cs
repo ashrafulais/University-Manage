@@ -11,6 +11,6 @@ namespace UniversityManage.Data.Interfaces
         public IEnumerable<Course> GetCoursesService();
         public void InsertCourseService(Course course);
         public void UpdateCourseService(Course course);
-        public void DeleteCourseService(Course course);
+        public void DeleteCourseService(int id);
     }
 }

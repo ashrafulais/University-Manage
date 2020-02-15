@@ -1,55 +1,69 @@
-﻿@model UniversityManage.Model.Instructor
+﻿@model UniversityManage.Model.Course
 @{
-    ViewData["Title"] = "Instructor";
+    ViewData["Title"] = "Course";
 
 }
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Add Instructor </h3>
-                </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form role="form" action="AddInstructor" method="post">
-                    <div asp-validation-summary="All" class="text-warning">
-
-                    </div>
-                    <div class="card-body">
-
-                        <div class="form-group">
-                            <label asp-for="@Model.Name">Instructor Name</label>
-                            <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Enter name">
-                        </div>
-
-                        <div class="form-group">
-                            <label asp-for="@Model.DepartmentId">Select Course</label>
-                            <select class="form-control" asp-for="@Model.DepartmentId">
-                                @if (ViewData["departments"] != null)
-                                {
-                                    var result = (List<UniversityManage.Model.Department>)ViewData["departments"];
-                                    foreach (var row in result)
-                                    {
-                                        <option value="@row.Id"> @row.Name </option>
-                                    }
-                                }
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label asp-for="@Model.Salary">Instructor Salary</label>
-                            <input asp-for="@Model.Salary" type="number" class="form-control" placeholder="Enter Numebr">
-                        </div>
-
-                    </div>
-                    <!-- /.card-body -->
-
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Add Instructor </h3>
             </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" action="AddCourse" method="post">
+                <div asp-validation-summary="All" class="text-warning">
 
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label asp-for="@Model.Code">Course Code</label>
+                        <input asp-for="@Model.Code" type="text" class="form-control" placeholder="CSE">
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@Model.Name">Course Name</label>
+                        <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Computer Science">
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@Model.DepartmentId">Select Department</label>
+                        <select class="form-control" asp-for="@Model.DepartmentId">
+                            @if (ViewData["departments"] != null)
+                            {
+                                var result = (List<UniversityManage.Model.Department>)ViewData["departments"];
+                                foreach (var row in result)
+                                {
+                                    <option value="@row.Id"> @row.Name </option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@Model.InstructorId">Select Instructor</label>
+                        <select class="form-control" asp-for="@Model.InstructorId">
+                            @if (ViewData["instructors"] != null)
+                            {
+                                var result = (List<UniversityManage.Model.Instructor>)ViewData["instructors"];
+                                foreach (var row in result)
+                                {
+                                    <option value="@row.Id"> @row.Id - @row.Name </option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
+
     </div>
+</div>

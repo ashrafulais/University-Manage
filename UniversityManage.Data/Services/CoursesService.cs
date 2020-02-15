@@ -13,11 +13,13 @@ namespace UniversityManage.Data.Services
         {
             _unitofWork = unitofWork;
         }
-        public void DeleteCourseService(Course course)
+        public void DeleteCourseService(int id)
         {
             try
             {
-                _unitofWork._coursesRepo.DeleteCourseRepo(course);
+                _unitofWork._coursesRepo.DeleteCourseRepo(
+                    _unitofWork._coursesRepo.GetCourseRepo(id)
+                    );
                 _unitofWork.Save();
             }
             catch (Exception e)

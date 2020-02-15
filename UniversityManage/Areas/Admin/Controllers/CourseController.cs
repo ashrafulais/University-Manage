@@ -13,11 +13,14 @@ namespace UniversityManage.Areas.Admin.Controllers
     {
         IInstructorService _instructorService;
         IDepartmentsService _departmentsService;
+        ICoursesService _coursesService;
         public CourseController(IInstructorService instructorService,
-        IDepartmentsService departmentsService)
+        IDepartmentsService departmentsService,
+        ICoursesService coursesService)
         {
             _instructorService = instructorService;
             _departmentsService = departmentsService;
+            _coursesService = coursesService;
         }
 
         public IActionResult Index()
@@ -25,12 +28,12 @@ namespace UniversityManage.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult AllInstructors()
+        public IActionResult AllCourses()
         {
             return View();
         }
 
-        public IActionResult AllInstructorsData()
+        public IActionResult AllCoursesData()
         {
             try
             {
@@ -48,7 +51,7 @@ namespace UniversityManage.Areas.Admin.Controllers
         {
             int total = 0;
             int totalFiltered = 0;
-            var records = _instructorService.GetInstructors();
+            var records = _coursesService.GetCoursesService();
 
             return new
             {
@@ -58,20 +61,21 @@ namespace UniversityManage.Areas.Admin.Controllers
                         select new string[]
                         {
                                 record.Id.ToString(),
+                                record.Code,
                                 record.Name,
                                 record.DepartmentId.ToString(),
-                                record.Salary.ToString()
+                                record.InstructorId.ToString()
                         }
                     ).ToArray()
             };
         }
 
-        public IActionResult ViewInstructor(int id)
+        public IActionResult ViewCourse(int id)
         {
             try
             {
-                return View(_instructorService
-                    .GetInstructor(id));
+                return View(_coursesService
+                    .GetCourseService(id));
             }
             catch (Exception e)
             {
@@ -79,15 +83,17 @@ namespace UniversityManage.Areas.Admin.Controllers
                 return View("Message");
             }
         }
-        public IActionResult AddInstructor()
+        public IActionResult AddCourse()
         {
             ViewData["departments"] = _departmentsService
                 .GetAllDepartmentsService();
+            ViewData["instructors"] = _instructorService
+                .GetInstructors();
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddInstructor(Instructor instructor)
+        public IActionResult AddCourse(Instructor instructor)
         {
             try
             {
@@ -102,14 +108,17 @@ namespace UniversityManage.Areas.Admin.Controllers
             }
         }
 
-        public IActionResult EditInstructor(int id)
+        public IActionResult EditCourse(int id)
         {
             try
             {
                 ViewData["departments"] = _departmentsService
-                    .GetAllDepartmentsService();
-                return View(_instructorService
-                    .GetInstructor(id)
+                .GetAllDepartmentsService();
+                ViewData["instructors"] = _instructorService
+                    .GetInstructors();
+
+                return View(_coursesService
+                    .GetCourseService(id)
                     );
             }
             catch (Exception e)
@@ -120,11 +129,11 @@ namespace UniversityManage.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditInstructor(Instructor instructor)
+        public IActionResult EditCourse(Course course)
         {
             try
             {
-                _instructorService.UpdateInstructor(instructor);
+                _coursesService.UpdateCourseService(course);
                 ViewData["Message"] = "Info Updated";
                 return View("Message");
             }
@@ -135,13 +144,13 @@ namespace UniversityManage.Areas.Admin.Controllers
             }
         }
 
-        public IActionResult DeleteInstructor(int id)
+        public IActionResult DeleteCourse(int id)
         {
             try
             {
-                _instructorService.DeleteInstructor(id);
+                _coursesService.DeleteCourseService(id);
 
-                ViewData["Message"] = "Instructor Deleted";
+                ViewData["Message"] = "Course Deleted";
                 return View("Message");
             }
             catch (Exception e)
