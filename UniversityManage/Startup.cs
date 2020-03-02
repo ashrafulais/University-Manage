@@ -20,7 +20,7 @@ namespace UniversityManage
 {
     public class Startup
     {
-        public static IContainer AutofacContainer;
+        //public static IContainer AutofacContainer;
 
         public Startup(IConfiguration configuration)
         {
