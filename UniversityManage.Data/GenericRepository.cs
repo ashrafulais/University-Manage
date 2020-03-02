@@ -33,7 +33,7 @@ namespace UniversityManage.Data
             _dbContext.Entry(entity).State = EntityState.Modified;
         }
 
-        public IList<T> GetAllData()
+        public List<T> GetAllData()
         {
             return _dbSet.Take(20).ToList();
         }

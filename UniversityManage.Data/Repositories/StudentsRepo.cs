@@ -8,10 +8,11 @@ using UniversityManage.Model;
 
 namespace UniversityManage.Data.Repositories
 {
-    public class StudentsRepo : IStudentsRepo
+    public class StudentsRepo : GenericRepository<Student> , IStudentsRepo
     {
         public UniversityContext _context;
         public StudentsRepo(UniversityContext context)
+            :base(context)
         {
             _context = context;
         }

@@ -5,7 +5,7 @@ using UniversityManage.Model;
 
 namespace UniversityManage.Data.Interfaces
 {
-    public interface IStudentsRepo
+    public interface IStudentsRepo : IGenericRepository<Student>
     {
         public List<Student> GetAllStudentsRepo();
         public Student GetStudentRepo(int id);

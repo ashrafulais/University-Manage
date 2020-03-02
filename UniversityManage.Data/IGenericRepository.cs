@@ -6,7 +6,7 @@ namespace UniversityManage.Data
 {
     public interface IGenericRepository<T> where T: class
     {
-        IList<T> GetAllData();
+        List<T> GetAllData();
         T GetById(int id);
         void Add(T entity);
         void Edit(T entity);
