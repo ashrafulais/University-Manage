@@ -31,7 +31,9 @@ namespace UniversityManage.Data.Services
         {
             try
             {
-                return _unitofWork._studentsRepo.GetAllStudentsRepo();
+                //Using Generics
+                return _unitofWork._studentsRepo
+                    .GetAllData();
             }
             catch (Exception e)
             {
